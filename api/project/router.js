@@ -20,6 +20,10 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
     try {
+        const { project_name } = req.body
+        if (!project_name) {
+            return res.status(400).json({ message: "project_name is required" })
+        }
         const project = await Project.create(req.body)
         // Convert project_completed from integer to boolean
         const formattedProject = {

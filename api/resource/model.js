@@ -9,8 +9,8 @@ const getById = (resource_id) => {
     return db("resources").where("resource_id", resource_id).first()
 }
 
-const create = async (resouce) => {
-    const [resource_id] = await db("resources").insert(resouce)
+const create = async (resource) => {
+    const [resource_id] = await db("resources").insert(resource)
     return getById(resource_id)
 }
 
